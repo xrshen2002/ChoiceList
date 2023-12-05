@@ -61,7 +61,7 @@ class Player(BasePlayer):
     )
 
     question_5_answer = models.IntegerField(
-        choices=[(f"{i}", f"{i}") for i in range(10, 25, 2)],
+        choices=[(f"{i}", f"{i}") for i in range(10, 31, 2)],
         label="",  # 设置问题文本
         widget=widgets.RadioSelectHorizontal  # 使用单选框
     )

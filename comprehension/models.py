@@ -21,11 +21,11 @@ class Constants(BaseConstants):
     QUESTION_1_TEXT = "Which of the following statements is true?"
     QUESTION_1_ANSWER = "future"
 
-    QUESTION_2_TEXT = "Suppose you are 80% certain that your decisions actually correspond to how much the different choice options are worth to you. Which button should you click in this case?"
-    QUESTION_2_ANSWER = "80%"
+    QUESTION_2_TEXT = "What do the following images represent?"
+    QUESTION_2_ANSWER = "3"
 
-    QUESTION_3_TEXT = "When we ask you how certain you are about how much different payments are worth to you at different points in time, then which type of uncertainty are we interested in?"
-    QUESTION_3_ANSWER = "value"
+    QUESTION_3_TEXT = "Which of the following selection methods is logical?"
+    QUESTION_3_ANSWER = "Selection Method 2"
 
     QUESTION_4_TEXT = "Please select the number 37:"
     QUESTION_4_ANSWER = 37
@@ -76,16 +76,28 @@ class Player(BasePlayer):
         label="",
         widget=widgets.RadioSelect  # Use widgets.RadioSelect here
     )
+
     question_2_answer = models.StringField(
-        choices=[(f"{i}%", f"{i}%") for i in range(0, 101, 10)],
+        choices=[
+            ('1',
+             'You would value $22 and $24 in 12-20-2023 somewhere between $15 today.'),
+            ('2',
+             'You would value $24 and $26 in 12-20-2023 somewhere between $15 today.'),
+            ('3',
+             'You would value $26 and $28 in 12-20-2023 somewhere between $15 today.')
+        ],
         label="",
-        widget=widgets.RadioSelectHorizontal  # 仍然使用 widgets.RadioSelect
+        widget=widgets.RadioSelect  # Use widgets.RadioSelect here
     )
+    # question_2_answer = models.StringField(
+    #     choices=[(f"{i}%", f"{i}%") for i in range(0, 101, 10)],
+    #     label="",
+    #     widget=widgets.RadioSelectHorizontal  # 仍然使用 widgets.RadioSelect
+    # )
     question_3_answer = models.StringField(
         choices=[
-            ('receipt', 'Uncertainty about whether I would actually receive the payments.'),
-            ('value',
-             'Uncertainty about how much I value the payments, assuming that I know I would receive them with certainty.')
+            ('Selection Method 1', 'Selection Method 1'),
+            ('Selection Method 2', 'Selection Method 2')
         ],
         label="",
         widget=widgets.RadioSelect  # And also here

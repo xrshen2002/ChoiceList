@@ -17,7 +17,8 @@
         width: 100%; /* Adjust the width as necessary */
     }
 </style>
-
+<p>The questions below test your understanding of the instructions.</p>
+<p><b>Important:</b> If you fail to answer all of these questions correctly on two consecutive attempts, you will not be allowed to participate in the study.</p>
 
 <div>
     <p style="margin-bottom: 0;">{{ question_1_text }}</p>
@@ -26,18 +27,34 @@
 <br>
 <br>
 <div>
-    <p style="margin-bottom: 0;">
-        {{ question_2_text }}
-    </p>
-</div>
-
-<div class="scrollable-radio-buttons">
+    <p style="margin-bottom: 0;">{{ question_2_text }}</p>
+    <img src="{{ static 'image/example7.png' }}" style="width:100%; max-width:800px; height:auto;"/>
     {% formfield form.question_2_answer %}
 </div>
+{#<div>#}
+{#    <p style="margin-bottom: 0;">#}
+{#        {{ question_2_text }}#}
+{#    </p>#}
+{#</div>#}
+{##}
+{#<div class="scrollable-radio-buttons">#}
+{#    {% formfield form.question_2_answer %}#}
+{#</div>#}
 <br>
 <br>
 <div>
     <p style="margin-bottom: 0;">{{ question_3_text }}</p>
+    <p>Note: The date of the option on the left has changed.</p>
+    <div style="display: flex; justify-content: space-around;">
+    <div style="text-align: center;">
+        <img src="{{ static 'image/example6.png' }}" style="max-width: 400px; height: auto;"/>
+        <p>Selection Method 1</p>
+    </div>
+    <div style="text-align: center;">
+        <img src="{{ static 'image/example3.png' }}" style="max-width: 400px; height: auto;"/>
+        <p>Selection Method 2</p>
+    </div>
+</div>
     {% formfield form.question_3_answer %}
 </div>
 
