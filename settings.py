@@ -51,3 +51,5 @@ Here are some oTree games.
 SECRET_KEY = '{{ secret_key }}'
 
 INSTALLED_APPS = ['otree']
+
+#be deleted part in line 8   ['comprehension',...]

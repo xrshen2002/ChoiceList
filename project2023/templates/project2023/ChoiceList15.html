@@ -35,16 +35,16 @@ Block {{ player.current_step }} of 9
     <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
         <thead>
         <tr class="text-center">
-            <th>Option A</th>
-            <th width="75">A</th>
-            <th width="75">B</th>
-            <th>Option B</th>
+            <th style="color: red;">Option A</th>
+            <th style="color: red;" width="75">A</th>
+            <th style="color: blue;" width="75">B</th>
+            <th style="color: blue;">Option B</th>
         </tr>
         </thead>
         <tbody class="small">
         {% for day, rev_day in day_gain %}
         <tr>
-            <td class="text-center">
+            <td style="color: red;" class="text-center">
                 Receiving $<span class="receiving_amount"></span> immediately
             </td>
 <script>
@@ -84,7 +84,7 @@ amountElements.forEach(function(element) {
                            value="B" data-day="{{ day }}" data-index="{{ forloop.counter }}">
                 </label>
             </td>
-            <td class="text-center">
+            <td style="color: blue;" class="text-center">
                 Receiving $20 on 01-05-2024
 <script>
 // JavaScript code to display fixed values

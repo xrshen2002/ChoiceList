@@ -16,42 +16,198 @@ class ChoiceStep(Enum):
     - a function to get the starting week for the choice list
     - a function to get the ending week for the choice list
     """
-    C_12 = 1, \
-           'c12', \
+    C_1 = 1, \
+           'c1', \
            lambda p: 1, \
-           lambda p: 16
-    C_14 = 2, \
-           'c14', \
+           lambda p: 19
+    C_2 = 2, \
+           'c2', \
            lambda p: 1, \
-           lambda p: 22
-    C_34 = 3, \
-           'c34', \
+           lambda p: 19
+    C_3 = 3, \
+           'c3', \
            lambda p: 1, \
-           lambda p: 5
+           lambda p: 19
     C_4 = 4, \
           'c4', \
           lambda p: 1, \
-          lambda p: 16
+          lambda p: 19
     C_5 = 5, \
            'c5', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 29
     C_6 = 6, \
            'c6', \
            lambda p: 1, \
-           lambda p: 5
+           lambda p: 29
     C_7 = 7, \
            'c7', \
            lambda p: 1, \
-           lambda p: 16
+           lambda p: 29
     C_8 = 8, \
            'c8', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 29
     C_9 = 9, \
            'c9', \
            lambda p: 1, \
-           lambda p: 5
+           lambda p: 19
+    C_10 = 10, \
+           'c10', \
+           lambda p: 1, \
+           lambda p: 19
+    C_11 = 11, \
+           'c11', \
+           lambda p: 1, \
+           lambda p: 19
+    C_12 = 12, \
+           'c12', \
+           lambda p: 1, \
+           lambda p: 19
+    C_13 = 13, \
+           'c13', \
+           lambda p: 1, \
+           lambda p: 29
+    C_14 = 14, \
+          'c14', \
+          lambda p: 1, \
+          lambda p: 29
+    C_15 = 15, \
+           'c15', \
+           lambda p: 1, \
+           lambda p: 29
+    C_16 = 16, \
+           'c16', \
+           lambda p: 1, \
+           lambda p: 29
+    C_17 = 17, \
+           'c17', \
+           lambda p: 1, \
+           lambda p: 19
+    C_18 = 18, \
+           'c18', \
+           lambda p: 1, \
+           lambda p: 19
+    C_19 = 19, \
+           'c19', \
+           lambda p: 1, \
+           lambda p: 19
+    C_20 = 20, \
+           'c20', \
+           lambda p: 1, \
+           lambda p: 19
+    C_21 = 21, \
+           'c21', \
+           lambda p: 1, \
+           lambda p: 29
+    C_22 = 22, \
+           'c22', \
+           lambda p: 1, \
+           lambda p: 29
+    C_23 = 23, \
+           'c23', \
+           lambda p: 1, \
+           lambda p: 29
+    C_24 = 24, \
+          'c24', \
+          lambda p: 1, \
+          lambda p: 29
+    C_25 = 25, \
+           'c25', \
+           lambda p: 1, \
+           lambda p: 19
+    C_26 = 26, \
+           'c26', \
+           lambda p: 1, \
+           lambda p: 19
+    C_27 = 27, \
+           'c27', \
+           lambda p: 1, \
+           lambda p: 19
+    C_28 = 28, \
+           'c28', \
+           lambda p: 1, \
+           lambda p: 19
+    C_29 = 29, \
+           'c29', \
+           lambda p: 1, \
+           lambda p: 29
+    C_30 = 30, \
+           'c30', \
+           lambda p: 1, \
+           lambda p: 29
+    C_31 = 31, \
+           'c31', \
+           lambda p: 1, \
+           lambda p: 29
+    C_32 = 32, \
+           'c2', \
+           lambda p: 1, \
+           lambda p: 29
+    C_33 = 33, \
+           'c33', \
+           lambda p: 1, \
+           lambda p: 19
+    C_34 = 34, \
+          'c34', \
+          lambda p: 1, \
+          lambda p: 19
+    C_35 = 35, \
+           'c35', \
+           lambda p: 1, \
+           lambda p: 19
+    C_36 = 36, \
+           'c36', \
+           lambda p: 1, \
+           lambda p: 19
+    C_37 = 37, \
+           'c37', \
+           lambda p: 1, \
+           lambda p: 29
+    C_38 = 38, \
+           'c38', \
+           lambda p: 1, \
+           lambda p: 29
+    C_39 = 39, \
+           'c39', \
+           lambda p: 1, \
+           lambda p: 29
+    C_40 = 40, \
+           'c40', \
+           lambda p: 1, \
+           lambda p: 29
+    C_41 = 41, \
+           'c41', \
+           lambda p: 1, \
+           lambda p: 19
+    C_42 = 42, \
+           'c42', \
+           lambda p: 1, \
+           lambda p: 19
+    C_43 = 43, \
+           'c43', \
+           lambda p: 1, \
+           lambda p: 19
+    C_44 = 44, \
+          'c44', \
+          lambda p: 1, \
+          lambda p: 19
+    C_45 = 45, \
+           'c45', \
+           lambda p: 1, \
+           lambda p: 29
+    C_46 = 46, \
+           'c46', \
+           lambda p: 1, \
+           lambda p: 29
+    C_47 = 47, \
+           'c47', \
+           lambda p: 1, \
+           lambda p: 29
+    C_48 = 48, \
+           'c48', \
+           lambda p: 1, \
+           lambda p: 29
 
     def __new__(cls, keycode: int,
                 field_name: str,

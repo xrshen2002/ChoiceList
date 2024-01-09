@@ -213,7 +213,7 @@ class ResultsWaitPage(WaitPage):
 page_sequence = [
     BasicInstruction,
     DecisionScreen1,
-    # DecisionScreen2,
+    DecisionScreen2,
     AttentionCheck1,
     FailedAttentionCheck,
     Results

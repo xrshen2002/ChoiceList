@@ -7,15 +7,17 @@
 
 {% block content %}
 <p>Please read these instructions carefully. There will be comprehension checks. If you <b>fail</b> these checks, you will be <b>excluded from the study</b> and you <b>will not receive the completion payment</b>.</p>
-<p>On the first decision screen, you will be asked to choose which of two payment options you prefer. You will see choice lists such as the one below, where each row is a separate choice.</p>
-<img src="{{ static 'image/example2.png' }}" style="width:100%; max-width:800px; height:auto;"/>
-<p>In every list, the left-hand side option (Option A) is a delayed payment that you will be paid in few days later. The right-hand side option (Option B) is a payment that you can be paid immediately. To make a choice just click on the option you prefer for each choice (i.e. for each row). An effective way to complete these choice lists is to determine in which row you like to switch from preferring Option A to preferring Option B. </p>
-    <p>Based on where you switch from Option A to Option B in this list, we assess which amount specified at the later payment date (Option A) you value as much as the amount paid immediately (Option B). For example, in the choice list below, you would value $30 and $32 in 12-20-2023 somewhere between $15 today, because this is where switching occurs.</p>
-    <p>Slightly different from the first, on the second decision screen, each column's left-hand side option (Option A) will be a payment that you can receive immediately. The right-hand side option (Option B) is a delayed payment that you will be paid in few days later.</p>
-    <img src="{{ static 'image/example4.png' }}" style="width:100%; max-width:800px; height:auto;"/>
+<p>On the <b>first</b> decision screen, you will be asked to choose which of two payment options you prefer. You will see choice lists such as the one below, where each row is a separate choice.</p>
+<img src="{{ static 'image/ex2.png' }}" style="width:100%; max-width:800px; height:auto;"/>
+    <br>
+    <br>
+    <p>In every list, the left-hand side option (Option A) is a payment that you can be paid <b>immediately</b>. The right-hand side option (Option B) is a <b>delayed</b> payment that you will be paid in few days later. To make a choice just click on the option you prefer for each choice (i.e. for each row). An effective way to complete these choice lists is to determine in which row you like to <b>switch</b> from preferring Option B to preferring Option A. </p>
+    <p>Based on where you switch from Option B to Option A in this list, we assess which amount paid immediately (Option A) you value as much as the amount paid specified at the later payment date (Option B). For example, in the choice list above, you would value $6 and $7 today somewhere between $20 in 15 days, because this is where switching occurs.</p>
     <p>The amount of money or the date will consistently change in the left-hand side option in subsequent questions.</p>
-<p>Note: While you may choose as shown in the image below, it is illogical. You wouldn't prefer receiving $30 on 12-20-2023 over receiving $15 immediately, and at the same time prefer receiving $15 immediately over receiving $32 on 12-20-2023 (in other words, you wouldn't prefer receiving $30 on 12-20-2023 over receiving $32 on the same date).</p>
-    <img src="{{ static 'image/example5.png' }}" style="width:100%; max-width:800px; height:auto;"/>
+    <p>Note: While you may choose as shown in the image below, it is <b>illogical</b>. You wouldn't prefer receiving $6 immediately over receiving $20 in 15 days, and at the same time prefer receiving $20 in 15 days over receiving $7 immediately (in other words, you wouldn't prefer receiving $6 immediately over receiving $7 immediately).</p>
+    <img src="{{ static 'image/ex3.png' }}" style="width:100%; max-width:800px; height:auto;"/>
+    <br>
+    <br>
 <p><b>Auto-completion</b>: The table auto-completes your choices so you don’t have to click through all of the rows. You do not have to start at the top of the table. If you select Option A in any one row, we assume you will also prefer Option A in all rows above that row. If you select Option B in any one row, we assume that you will also prefer Option B in all rows below that row.</p>
     {% next_button %}
 {% endblock %}

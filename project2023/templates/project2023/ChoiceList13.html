@@ -1,13 +1,14 @@
 {% extends "global/Page.html" %}
 {% load staticfiles otree %}
 {% load staticfiles %}
+{% load otree static %}
 
 {% block title %}
-Block {{ player.current_step }} of 9
+The Choice List
 {% endblock %}
 
 {% block content %}
-    <p style="text-align: center;">Today is <b>12-21-2023</b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
+    <p style="text-align: center;">Suppose today is <b>12-21-2023</b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
     <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
 <p>Note: Money or date will change in subsequent questions.</p>
 
@@ -25,7 +26,7 @@ Block {{ player.current_step }} of 9
 <hr>
 
 <div class="progress">
-    <div class="progress-bar" style="width: {{ progress }}%">{{ player.current_step }} / 9</div>
+    <div class="progress-bar" style="width: {{ progress }}%">{{ player.current_step }} / 6</div>
 </div>
 
 <hr>
@@ -35,16 +36,16 @@ Block {{ player.current_step }} of 9
     <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
         <thead>
         <tr class="text-center">
-            <th>Option A</th>
-            <th width="75">A</th>
-            <th width="75">B</th>
-            <th>Option B</th>
+            <th style="color: red;">Option A</th>
+            <th style="color: red;" width="75">A</th>
+            <th style="color: blue;" width="75">B</th>
+            <th style="color: blue;">Option B</th>
         </tr>
         </thead>
         <tbody class="small">
         {% for day, rev_day in day_gain %}
         <tr>
-            <td class="text-center">
+            <td style="color: red;" class="text-center">
                 Receiving $<span class="receiving_amount"></span> on 01-05-2024
             </td>
             <script>
@@ -99,7 +100,7 @@ Block {{ player.current_step }} of 9
                            value="B" data-day="{{ day }}" data-index="{{ forloop.counter }}">
                 </label>
             </td>
-            <td class="text-center">
+            <td style="color: blue;" class="text-center">
                 Receiving $15 immediately
             </td>
         </tr>
@@ -133,16 +134,17 @@ Block {{ player.current_step }} of 9
         <span class="otdm__confirmation-other"></span>
     </p>
 
-    <br>
-
-    <p class="text-center">Are you sure about your choice?</p>
-
-    <div class="text-center">
-        <button class="btn btn-primary otdm__confirmation-yes" type="submit">YES</button>
-        <button class="btn btn-light otdm__confirmation-no" type="button">NO</button>
+<div class="certainty-question">
+    <h5>How certain are you that you prefer to</h5>
+    <div class="percentage-slider">
+        {% formfield player.certainty label="" %}
+    </div>
+    <div class="slider-labels">
+        <span class="slider-label-left">very uncertain</span>
+        <span class="slider-label-right">completely certain</span>
     </div>
 </div>
-
+    {% next_button %}
 <input class="otdm__value" type="hidden" name="{{ var_name }}">
 
 {% endblock %}
