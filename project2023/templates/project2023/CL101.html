@@ -5,13 +5,12 @@
 
 {% block title %}
     The Choice List
-{#Block {{ player.current_step }} of 6#}
 {% endblock %}
 
 {% block content %}
     <p style="text-align: center;font-size: 24px;">Today is <b><span id="date"></span></b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
     <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
-{#    <p>Note: Money or date will change in subsequent questions.</p>#}
+    <p> Note: The amount of money and date might be different from previous questions.</p>
 
 <script>
         var today = new Date();
@@ -23,14 +22,6 @@
 
         document.getElementById("date").textContent = formattedDate;
 </script>
-
-{#<hr>#}
-{##}
-{#<div class="progress">#}
-{#    <div class="progress-bar" style="width: {{ progress }}%">{{ player.current_step }} / 6</div>#}
-{#</div>#}
-{##}
-{#<hr>#}
 
 <div class="otdm__choices-selection">
 
@@ -47,7 +38,7 @@
         {% for day, rev_day in day_gain %}
         <tr>
             <td class="text-center">
-                <span style="color: red;">$<span class="receiving_amount"></span> now</span>
+                <span style="color: red;">$<span class="receiving_amount"></span> on <span class="receiving_date"></span></span>
             </td>
             <script>
     // JavaScript code to update the values
@@ -101,7 +92,31 @@
                 </label>
             </td>
             <td class="text-center">
-                 <span style="color: blue;">$20 in 15 days</span>
+                <span style="color: blue;">$25 on <span class="receiving_date1"></span></span>
+        <script>
+
+    var currentDate1 = new Date();
+    var futureDate1 = calculateFutureDate(45); // 计算30天之后的日期
+
+    // 计算日期（假设您希望日期是15天之后的日期）
+    function calculateFutureDate(daysInFuture) {
+        var futureDate1 = new Date(currentDate1);
+        futureDate1.setDate(currentDate1.getDate() + daysInFuture); // 增加15天
+        var year = futureDate1.getFullYear();
+        var month = futureDate1.getMonth() + 1;
+        var day = futureDate1.getDate();
+        return month + "-" + day + "-" + year;
+    }
+
+    // 获取所有包含 class="receiving_date" 的元素
+    var dateElements = document.querySelectorAll('.receiving_date1');
+
+    // 更新每个元素的日期
+    dateElements.forEach(function(element) {
+        // 更新HTML中的日期为15天之后的日期
+        element.textContent = futureDate1;
+    });
+</script>
             </td>
         </tr>
         {% endfor %}
@@ -136,7 +151,7 @@
 
 <div class="certainty-question" style="margin-bottom: 20px;"> <!-- 增加了底部外边距 -->
     <div class="percentage-slider">
-        {% formfield player.cert10 label="" %}
+        {% formfield player.cert101 label="" %}
     </div>
     <div class="slider-labels" style="display: flex; justify-content: space-between; width: 100%; padding: 0 10px; font-weight: bold;"> <!-- 加粗文本 -->
         <span class="slider-label-left">very uncertain</span>
@@ -144,31 +159,7 @@
     </div>
 </div>
 
-{#<!-- Next 按钮样式，如果需要，可以添加额外的类或内联样式 -->#}
-{#<div style="text-align: center; margin-top: 20px;"> <!-- 增加了顶部外边距 -->#}
-{#    <button class="btn btn-primary" type="submit">Next</button>#}
-{#</div>#}
-
     {% next_button %}
-{#<div>#}
-{#    <p style="margin-bottom: 0;">#}
-{#        {{ question_7_text }}#}
-{#    </p>#}
-{#</div>#}
-{##}
-{#    <div class="scrollable-radio-buttons">#}
-{#    {% formfield form.question_7_answer %}#}
-{#    </div>#}
-
-
-
-{#    <p class="text-center">Are you sure about your choice?</p>#}
-{##}
-{#    <div class="text-center">#}
-{#        <button class="btn btn-primary otdm__confirmation-yes" type="submit">YES</button>#}
-{#        <button class="btn btn-light otdm__confirmation-no" type="button">NO</button>#}
-{#    </div>#}
-</div>
 
 <input class="otdm__value" type="hidden" name="{{ var_name }}">
 

@@ -8,9 +8,9 @@
 {% endblock %}
 
 {% block content %}
-    <p style="text-align: center;">Today is <b><span id="date"></span></b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
+    <p style="text-align: center;font-size: 24px;">Today is <b><span id="date"></span></b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
     <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
-    <p>Note: Money or date will change in subsequent questions.</p>
+    <p> Note: The amount of money and number of days might be different from previous questions.</p>
 
 <script>
         var today = new Date();
@@ -37,8 +37,8 @@
         <tbody class="small">
         {% for day, rev_day in day_gain %}
         <tr>
-            <td class="text-center" style="color: red;">
-                Receiving $<span class="receiving_amount"></span> immediately
+            <td class="text-center">
+                <span style="color: red;">$<span class="receiving_amount"></span> now</span>
             </td>
             <script>
     // JavaScript code to update the values
@@ -91,8 +91,8 @@
                            value="B" data-day="{{ day }}" data-index="{{ forloop.counter }}">
                 </label>
             </td>
-            <td class="text-center" style="color: blue;">
-                Receiving $30 in 15 days
+            <td class="text-center">
+                <span style="color: blue;">$30 in 15 days</span>
             </td>
         </tr>
         {% endfor %}

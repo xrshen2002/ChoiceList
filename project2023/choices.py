@@ -27,27 +27,27 @@ class ChoiceStep(Enum):
     C_3 = 3, \
            'c3', \
            lambda p: 1, \
-           lambda p: 19
+           lambda p: 29
     C_4 = 4, \
           'c4', \
           lambda p: 1, \
-          lambda p: 19
+          lambda p: 29
     C_5 = 5, \
            'c5', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 24
     C_6 = 6, \
            'c6', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 24
     C_7 = 7, \
            'c7', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 34
     C_8 = 8, \
            'c8', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 34
     C_9 = 9, \
            'c9', \
            lambda p: 1, \
@@ -59,27 +59,27 @@ class ChoiceStep(Enum):
     C_11 = 11, \
            'c11', \
            lambda p: 1, \
-           lambda p: 19
+           lambda p: 29
     C_12 = 12, \
            'c12', \
            lambda p: 1, \
-           lambda p: 19
+           lambda p: 29
     C_13 = 13, \
            'c13', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 24
     C_14 = 14, \
           'c14', \
           lambda p: 1, \
-          lambda p: 29
+          lambda p: 24
     C_15 = 15, \
            'c15', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 34
     C_16 = 16, \
            'c16', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 34
     C_17 = 17, \
            'c17', \
            lambda p: 1, \
@@ -91,27 +91,27 @@ class ChoiceStep(Enum):
     C_19 = 19, \
            'c19', \
            lambda p: 1, \
-           lambda p: 19
+           lambda p: 29
     C_20 = 20, \
            'c20', \
            lambda p: 1, \
-           lambda p: 19
+           lambda p: 29
     C_21 = 21, \
            'c21', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 24
     C_22 = 22, \
            'c22', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 24
     C_23 = 23, \
            'c23', \
            lambda p: 1, \
-           lambda p: 29
+           lambda p: 34
     C_24 = 24, \
           'c24', \
           lambda p: 1, \
-          lambda p: 29
+          lambda p: 34
     C_25 = 25, \
            'c25', \
            lambda p: 1, \

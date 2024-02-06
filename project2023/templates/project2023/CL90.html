@@ -5,7 +5,6 @@
 
 {% block title %}
     The Choice List
-{#Block {{ player.current_step }} of 6#}
 {% endblock %}
 
 {% block content %}
@@ -24,14 +23,6 @@
         document.getElementById("date").textContent = formattedDate;
 </script>
 
-{#<hr>#}
-{##}
-{#<div class="progress">#}
-{#    <div class="progress-bar" style="width: {{ progress }}%">{{ player.current_step }} / 6</div>#}
-{#</div>#}
-{##}
-{#<hr>#}
-
 <div class="otdm__choices-selection">
 
     <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
@@ -47,7 +38,7 @@
         {% for day, rev_day in day_gain %}
         <tr>
             <td class="text-center">
-                <span style="color: red;">$<span class="receiving_amount"></span> now</span>
+                <span style="color: red;">$<span class="receiving_amount"></span> in 15 days</span>
             </td>
             <script>
     // JavaScript code to update the values
@@ -101,7 +92,7 @@
                 </label>
             </td>
             <td class="text-center">
-                 <span style="color: blue;">$20 in 15 days</span>
+                <span style="color: blue;">$20 in 30 days</span>
             </td>
         </tr>
         {% endfor %}
@@ -136,7 +127,7 @@
 
 <div class="certainty-question" style="margin-bottom: 20px;"> <!-- 增加了底部外边距 -->
     <div class="percentage-slider">
-        {% formfield player.cert10 label="" %}
+        {% formfield player.cert90 label="" %}
     </div>
     <div class="slider-labels" style="display: flex; justify-content: space-between; width: 100%; padding: 0 10px; font-weight: bold;"> <!-- 加粗文本 -->
         <span class="slider-label-left">very uncertain</span>
@@ -144,31 +135,7 @@
     </div>
 </div>
 
-{#<!-- Next 按钮样式，如果需要，可以添加额外的类或内联样式 -->#}
-{#<div style="text-align: center; margin-top: 20px;"> <!-- 增加了顶部外边距 -->#}
-{#    <button class="btn btn-primary" type="submit">Next</button>#}
-{#</div>#}
-
     {% next_button %}
-{#<div>#}
-{#    <p style="margin-bottom: 0;">#}
-{#        {{ question_7_text }}#}
-{#    </p>#}
-{#</div>#}
-{##}
-{#    <div class="scrollable-radio-buttons">#}
-{#    {% formfield form.question_7_answer %}#}
-{#    </div>#}
-
-
-
-{#    <p class="text-center">Are you sure about your choice?</p>#}
-{##}
-{#    <div class="text-center">#}
-{#        <button class="btn btn-primary otdm__confirmation-yes" type="submit">YES</button>#}
-{#        <button class="btn btn-light otdm__confirmation-no" type="button">NO</button>#}
-{#    </div>#}
-</div>
 
 <input class="otdm__value" type="hidden" name="{{ var_name }}">
 

@@ -162,6 +162,46 @@ class Player(BasePlayer):
         choices=[(i, f"{i}%") for i in range(0, 101, 10)],
         widget=widgets.RadioSelectHorizontal
     )
+    cert90 = models.IntegerField(
+        label="",
+        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
+        widget=widgets.RadioSelectHorizontal
+    )
+    cert91 = models.IntegerField(
+        label="",
+        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
+        widget=widgets.RadioSelectHorizontal
+    )
+    cert100 = models.IntegerField(
+        label="",
+        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
+        widget=widgets.RadioSelectHorizontal
+    )
+    cert101 = models.IntegerField(
+        label="",
+        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
+        widget=widgets.RadioSelectHorizontal
+    )
+    cert110 = models.IntegerField(
+        label="",
+        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
+        widget=widgets.RadioSelectHorizontal
+    )
+    cert111 = models.IntegerField(
+        label="",
+        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
+        widget=widgets.RadioSelectHorizontal
+    )
+    cert120 = models.IntegerField(
+        label="",
+        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
+        widget=widgets.RadioSelectHorizontal
+    )
+    cert121 = models.IntegerField(
+        label="",
+        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
+        widget=widgets.RadioSelectHorizontal
+    )
     cert10l = models.IntegerField(
         label="",
         choices=[(i, f"{i}%") for i in range(0, 101, 10)],

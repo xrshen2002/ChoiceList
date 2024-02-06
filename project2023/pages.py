@@ -868,6 +868,384 @@ class CL81(Page):
             setattr(self.player, field_name, switch_lower_bound)
             self.player.goto_next_step()
 
+class CL90(Page):
+
+    form_model = 'player'
+    form_fields = ['cert90']
+
+    def is_displayed(self):
+        return self.player.get_current_step() != -1
+
+    def get_form_fields(self) -> List[str]:
+        manager = ChoiceManager(self.player)
+        dynamic_field = manager.get_step().get_field()
+    # 确保 certainty 字段总是被返回
+        if dynamic_field != 'cert90':
+            return [dynamic_field, 'cert90']
+        else:
+            return ['cert90']
+
+    def vars_for_template(self):
+        manager = ChoiceManager(self.player)
+        day_range = manager.get_day_range()
+        day_start = day_range[0]
+        day_end = day_range[-1]
+        option_a_date = day_range[:]
+        option_b_date = day_range[:]
+        day_gain = zip(option_a_date, option_b_date)
+
+        return {
+            'progress': self.player.get_current_step() / 6 * 100,
+            'var_name': manager.get_step().get_field(),
+            'day_start': day_start,
+            'day_end': day_end,
+            'day_gain': day_gain,
+        }
+    def before_next_page(self):
+        manager = ChoiceManager(self.player)
+
+        field_name = manager.get_step().get_field()
+        index = getattr(self.player, field_name) - 1
+        day_range = manager.get_day_range()
+
+        if index == -1:
+            setattr(self.player, field_name, index)
+            self.player.cancel_game()
+        else:
+            switch_lower_bound = day_range[index]
+            setattr(self.player, field_name, switch_lower_bound)
+            self.player.goto_next_step()
+
+class CL91(Page):
+
+    form_model = 'player'
+    form_fields = ['cert91']
+
+    def is_displayed(self):
+        return self.player.get_current_step() != -1
+
+    def get_form_fields(self) -> List[str]:
+        manager = ChoiceManager(self.player)
+        dynamic_field = manager.get_step().get_field()
+    # 确保 certainty 字段总是被返回
+        if dynamic_field != 'cert91':
+            return [dynamic_field, 'cert91']
+        else:
+            return ['cert91']
+
+    def vars_for_template(self):
+        manager = ChoiceManager(self.player)
+        day_range = manager.get_day_range()
+        day_start = day_range[0]
+        day_end = day_range[-1]
+        option_a_date = day_range[:]
+        option_b_date = day_range[:]
+        day_gain = zip(option_a_date, option_b_date)
+
+        return {
+            'progress': self.player.get_current_step() / 6 * 100,
+            'var_name': manager.get_step().get_field(),
+            'day_start': day_start,
+            'day_end': day_end,
+            'day_gain': day_gain,
+        }
+    def before_next_page(self):
+        manager = ChoiceManager(self.player)
+
+        field_name = manager.get_step().get_field()
+        index = getattr(self.player, field_name) - 1
+        day_range = manager.get_day_range()
+
+        if index == -1:
+            setattr(self.player, field_name, index)
+            self.player.cancel_game()
+        else:
+            switch_lower_bound = day_range[index]
+            setattr(self.player, field_name, switch_lower_bound)
+            self.player.goto_next_step()
+
+class CL100(Page):
+
+    form_model = 'player'
+    form_fields = ['cert100']
+
+    def is_displayed(self):
+        return self.player.get_current_step() != -1
+
+    def get_form_fields(self) -> List[str]:
+        manager = ChoiceManager(self.player)
+        dynamic_field = manager.get_step().get_field()
+    # 确保 certainty 字段总是被返回
+        if dynamic_field != 'cert100':
+            return [dynamic_field, 'cert100']
+        else:
+            return ['cert100']
+
+    def vars_for_template(self):
+        manager = ChoiceManager(self.player)
+        day_range = manager.get_day_range()
+        day_start = day_range[0]
+        day_end = day_range[-1]
+        option_a_date = day_range[:]
+        option_b_date = day_range[:]
+        day_gain = zip(option_a_date, option_b_date)
+
+        return {
+            'progress': self.player.get_current_step() / 6 * 100,
+            'var_name': manager.get_step().get_field(),
+            'day_start': day_start,
+            'day_end': day_end,
+            'day_gain': day_gain,
+        }
+    def before_next_page(self):
+        manager = ChoiceManager(self.player)
+
+        field_name = manager.get_step().get_field()
+        index = getattr(self.player, field_name) - 1
+        day_range = manager.get_day_range()
+
+        if index == -1:
+            setattr(self.player, field_name, index)
+            self.player.cancel_game()
+        else:
+            switch_lower_bound = day_range[index]
+            setattr(self.player, field_name, switch_lower_bound)
+            self.player.goto_next_step()
+class CL101(Page):
+
+    form_model = 'player'
+    form_fields = ['cert101']
+
+    def is_displayed(self):
+        return self.player.get_current_step() != -1
+
+    def get_form_fields(self) -> List[str]:
+        manager = ChoiceManager(self.player)
+        dynamic_field = manager.get_step().get_field()
+    # 确保 certainty 字段总是被返回
+        if dynamic_field != 'cert101':
+            return [dynamic_field, 'cert101']
+        else:
+            return ['cert101']
+
+    def vars_for_template(self):
+        manager = ChoiceManager(self.player)
+        day_range = manager.get_day_range()
+        day_start = day_range[0]
+        day_end = day_range[-1]
+        option_a_date = day_range[:]
+        option_b_date = day_range[:]
+        day_gain = zip(option_a_date, option_b_date)
+
+        return {
+            'progress': self.player.get_current_step() / 6 * 100,
+            'var_name': manager.get_step().get_field(),
+            'day_start': day_start,
+            'day_end': day_end,
+            'day_gain': day_gain,
+        }
+    def before_next_page(self):
+        manager = ChoiceManager(self.player)
+
+        field_name = manager.get_step().get_field()
+        index = getattr(self.player, field_name) - 1
+        day_range = manager.get_day_range()
+
+        if index == -1:
+            setattr(self.player, field_name, index)
+            self.player.cancel_game()
+        else:
+            switch_lower_bound = day_range[index]
+            setattr(self.player, field_name, switch_lower_bound)
+            self.player.goto_next_step()
+class CL110(Page):
+
+    form_model = 'player'
+    form_fields = ['cert110']
+
+    def is_displayed(self):
+        return self.player.get_current_step() != -1
+
+    def get_form_fields(self) -> List[str]:
+        manager = ChoiceManager(self.player)
+        dynamic_field = manager.get_step().get_field()
+    # 确保 certainty 字段总是被返回
+        if dynamic_field != 'cert110':
+            return [dynamic_field, 'cert110']
+        else:
+            return ['cert110']
+
+    def vars_for_template(self):
+        manager = ChoiceManager(self.player)
+        day_range = manager.get_day_range()
+        day_start = day_range[0]
+        day_end = day_range[-1]
+        option_a_date = day_range[:]
+        option_b_date = day_range[:]
+        day_gain = zip(option_a_date, option_b_date)
+
+        return {
+            'progress': self.player.get_current_step() / 6 * 100,
+            'var_name': manager.get_step().get_field(),
+            'day_start': day_start,
+            'day_end': day_end,
+            'day_gain': day_gain,
+        }
+    def before_next_page(self):
+        manager = ChoiceManager(self.player)
+
+        field_name = manager.get_step().get_field()
+        index = getattr(self.player, field_name) - 1
+        day_range = manager.get_day_range()
+
+        if index == -1:
+            setattr(self.player, field_name, index)
+            self.player.cancel_game()
+        else:
+            switch_lower_bound = day_range[index]
+            setattr(self.player, field_name, switch_lower_bound)
+            self.player.goto_next_step()
+class CL111(Page):
+
+    form_model = 'player'
+    form_fields = ['cert111']
+
+    def is_displayed(self):
+        return self.player.get_current_step() != -1
+
+    def get_form_fields(self) -> List[str]:
+        manager = ChoiceManager(self.player)
+        dynamic_field = manager.get_step().get_field()
+    # 确保 certainty 字段总是被返回
+        if dynamic_field != 'cert111':
+            return [dynamic_field, 'cert111']
+        else:
+            return ['cert111']
+
+    def vars_for_template(self):
+        manager = ChoiceManager(self.player)
+        day_range = manager.get_day_range()
+        day_start = day_range[0]
+        day_end = day_range[-1]
+        option_a_date = day_range[:]
+        option_b_date = day_range[:]
+        day_gain = zip(option_a_date, option_b_date)
+
+        return {
+            'progress': self.player.get_current_step() / 6 * 100,
+            'var_name': manager.get_step().get_field(),
+            'day_start': day_start,
+            'day_end': day_end,
+            'day_gain': day_gain,
+        }
+    def before_next_page(self):
+        manager = ChoiceManager(self.player)
+
+        field_name = manager.get_step().get_field()
+        index = getattr(self.player, field_name) - 1
+        day_range = manager.get_day_range()
+
+        if index == -1:
+            setattr(self.player, field_name, index)
+            self.player.cancel_game()
+        else:
+            switch_lower_bound = day_range[index]
+            setattr(self.player, field_name, switch_lower_bound)
+            self.player.goto_next_step()
+class CL120(Page):
+
+    form_model = 'player'
+    form_fields = ['cert120']
+
+    def is_displayed(self):
+        return self.player.get_current_step() != -1
+
+    def get_form_fields(self) -> List[str]:
+        manager = ChoiceManager(self.player)
+        dynamic_field = manager.get_step().get_field()
+    # 确保 certainty 字段总是被返回
+        if dynamic_field != 'cert120':
+            return [dynamic_field, 'cert120']
+        else:
+            return ['cert120']
+
+    def vars_for_template(self):
+        manager = ChoiceManager(self.player)
+        day_range = manager.get_day_range()
+        day_start = day_range[0]
+        day_end = day_range[-1]
+        option_a_date = day_range[:]
+        option_b_date = day_range[:]
+        day_gain = zip(option_a_date, option_b_date)
+
+        return {
+            'progress': self.player.get_current_step() / 6 * 100,
+            'var_name': manager.get_step().get_field(),
+            'day_start': day_start,
+            'day_end': day_end,
+            'day_gain': day_gain,
+        }
+    def before_next_page(self):
+        manager = ChoiceManager(self.player)
+
+        field_name = manager.get_step().get_field()
+        index = getattr(self.player, field_name) - 1
+        day_range = manager.get_day_range()
+
+        if index == -1:
+            setattr(self.player, field_name, index)
+            self.player.cancel_game()
+        else:
+            switch_lower_bound = day_range[index]
+            setattr(self.player, field_name, switch_lower_bound)
+            self.player.goto_next_step()
+class CL121(Page):
+
+    form_model = 'player'
+    form_fields = ['cert121']
+
+    def is_displayed(self):
+        return self.player.get_current_step() != -1
+
+    def get_form_fields(self) -> List[str]:
+        manager = ChoiceManager(self.player)
+        dynamic_field = manager.get_step().get_field()
+    # 确保 certainty 字段总是被返回
+        if dynamic_field != 'cert121':
+            return [dynamic_field, 'cert121']
+        else:
+            return ['cert121']
+
+    def vars_for_template(self):
+        manager = ChoiceManager(self.player)
+        day_range = manager.get_day_range()
+        day_start = day_range[0]
+        day_end = day_range[-1]
+        option_a_date = day_range[:]
+        option_b_date = day_range[:]
+        day_gain = zip(option_a_date, option_b_date)
+
+        return {
+            'progress': self.player.get_current_step() / 6 * 100,
+            'var_name': manager.get_step().get_field(),
+            'day_start': day_start,
+            'day_end': day_end,
+            'day_gain': day_gain,
+        }
+    def before_next_page(self):
+        manager = ChoiceManager(self.player)
+
+        field_name = manager.get_step().get_field()
+        index = getattr(self.player, field_name) - 1
+        day_range = manager.get_day_range()
+
+        if index == -1:
+            setattr(self.player, field_name, index)
+            self.player.cancel_game()
+        else:
+            switch_lower_bound = day_range[index]
+            setattr(self.player, field_name, switch_lower_bound)
+            self.player.goto_next_step()
 class CL10l(Page):
 
     form_model = 'player'
@@ -2445,59 +2823,69 @@ class Results(Page):
 
 page_sequence = [
     CL10,
-    CL11,
     CL20,
-    CL21,
     CL30,
-    CL31,
     CL40,
+    CL11,
+    CL21,
+    CL31,
     CL41,
-    CL50,
-    CL51,
-    CL60,
-    CL61,
-    CL70,
-    CL71,
-    CL80,
-    CL81,
     Instruction1,
     AttentionCheck2,
-    CL10l,
-    CL11l,
-    CL20l,
-    CL21l,
-    CL30l,
-    CL31l,
-    CL40l,
-    CL41l,
-    CL50l,
-    CL51l,
-    CL60l,
-    CL61l,
-    CL70l,
-    CL71l,
-    CL80l,
-    CL81l,
+    CL90,
+    CL100,
+    CL110,
+    CL120,
+    CL91,
+    CL101,
+    CL111,
+    CL121,
     Instruction2,
     AttentionCheck3,
-    CL10s,
-    CL11s,
-    CL20s,
-    CL21s,
-    CL30s,
-    CL31s,
-    CL40s,
-    CL41s,
-    CL50s,
-    CL51s,
-    CL60s,
-    CL61s,
-    CL70s,
-    CL71s,
-    CL80s,
-    CL81s,
+    CL50,
+    CL60,
+    CL70,
+    CL80,
+    CL51,
+    CL61,
+    CL71,
+    CL81,
+
+    # CL10l,
+    # CL11l,
+    # CL20l,
+    # CL21l,
+    # CL30l,
+    # CL31l,
+    # CL40l,
+    # CL41l,
+    # CL50l,
+    # CL51l,
+    # CL60l,
+    # CL61l,
+    # CL70l,
+    # CL71l,
+    # CL80l,
+    # CL81l,
+
+    # CL10s,
+    # CL11s,
+    # CL20s,
+    # CL21s,
+    # CL30s,
+    # CL31s,
+    # CL40s,
+    # CL41s,
+    # CL50s,
+    # CL51s,
+    # CL60s,
+    # CL61s,
+    # CL70s,
+    # CL71s,
+    # CL80s,
+    # CL81s,
     # *chosen_group,
-    # Instruction2,
+
     # AttentionCheck4,
     Demographic,
     Results,

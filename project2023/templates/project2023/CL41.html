@@ -8,9 +8,9 @@
 {% endblock %}
 
 {% block content %}
-    <p style="text-align: center;">Today is <b><span class="date"></span></b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
+    <p style="text-align: center;font-size: 24px;">Today is <b><span class="date"></span></b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
     <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
-    <p>Note: Money or date will change in subsequent questions.</p>
+    <p> Note: The amount of money and date might be different from previous questions.</p>
 
 <div class="otdm__choices-selection">
 
@@ -26,8 +26,8 @@
         <tbody class="small">
         {% for day, rev_day in day_gain %}
         <tr>
-            <td class="text-center" style="color: red;">
-                Receiving $<span class="receiving_amount"></span> on <span class="date"></span>
+            <td class="text-center">
+                <span style="color: red;">$<span class="receiving_amount"></span> on <span class="date"></span></span>
             </td>
 
 <script>
@@ -75,8 +75,8 @@ amountElements.forEach(function(element) {
                            value="B" data-day="{{ day }}" data-index="{{ forloop.counter }}">
                 </label>
             </td>
-            <td style="color: blue;" class="text-center">
-                Receiving $30 on <span class="receiving_date"></span>
+            <td class="text-center">
+                <span style="color: blue;">$35 on <span class="receiving_date"></span></span>
 <script>
     // JavaScript code to display fixed values
     var daysInFuture = 30; // 固定日期为 15 天后
