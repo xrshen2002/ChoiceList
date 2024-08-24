@@ -80,11 +80,11 @@ class Player(BasePlayer):
     question_2_answer = models.StringField(
         choices=[
             ('1',
-             'You would value $10 and $11 today somewhere between $20 in 15 days.'),
+             'You would value $20 in 15 days somewhere between $10 and $11 today.'),
             ('2',
-             'You would value $11 and $12 today somewhere between $20 in 15 days.'),
+             'You would value $20 in 15 days somewhere between $11 and $12 today.'),
             ('3',
-             'You would value $12 and $13 today somewhere between $20 in 15 days.')
+             'You would value $20 in 15 days somewhere between $12 and $13 today.')
         ],
         label="",
         widget=widgets.RadioSelect  # Use widgets.RadioSelect here

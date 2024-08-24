@@ -8,23 +8,13 @@
 {% endblock %}
 
 {% block content %}
-    <p style="text-align: center;font-size: 24px;">Today is <b><span id="date"></span></b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
-    <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
-    <p> Note: The amount of money and number of days might be different from previous questions.</p>
+    <p style="text-align: center;font-size: 24px;">Imgaine the following hypothetical scenario where today is <b><span class="receiving_date"></span></b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
 
-<script>
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1; // 月份从 0 开始，需要加 1
-        var day = today.getDate();
-
-        var formattedDate = month + '-' + day + '-' + year;
-
-        document.getElementById("date").textContent = formattedDate;
-</script>
+{#    <p>Note: Money or date will change in subsequent questions.</p>#}
 
 <div class="otdm__choices-selection">
-
+    <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
+    <p>Note: You are predicting what you will choose in the future, the amount of money and number of days might be different from previous questions.</p>
     <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
         <thead>
         <tr class="text-center">
@@ -38,18 +28,18 @@
         {% for day, rev_day in day_gain %}
         <tr>
             <td class="text-center">
-                <span style="color: red;">$<span class="receiving_amount"></span> in 15 days</span>
+                <span style="color: red;">$<span class="receiving_amount"></span> now</span>
             </td>
             <script>
     // JavaScript code to update the values
-    var receivingAmount = 1; // 初始金额
+    var receivingAmount = 0; // 初始金额
     var currentDate = new Date();
-    var futureDate = calculateFutureDate(15); // 计算15天之后的日期
+    var futureDate = calculateFutureDate(6); // 计算7天之后的日期
 
-    // 计算日期（假设您希望日期是15天之后的日期）
+    // 计算日期（假设您希望日期是7天之后的日期）
     function calculateFutureDate(daysInFuture) {
         var futureDate = new Date(currentDate);
-        futureDate.setDate(currentDate.getDate() + daysInFuture); // 增加15天
+        futureDate.setDate(currentDate.getDate() + daysInFuture); // 增加7天
         var year = futureDate.getFullYear();
         var month = futureDate.getMonth() + 1;
         var day = futureDate.getDate();
@@ -73,7 +63,7 @@
 
     // 更新每个元素的日期
     dateElements.forEach(function(element) {
-        // 更新HTML中的日期为15天之后的日期
+        // 更新HTML中的日期为7天之后的日期
         element.textContent = futureDate;
     });
 </script>
@@ -92,7 +82,7 @@
                 </label>
             </td>
             <td class="text-center">
-                <span style="color: blue;">$30 in 30 days</span>
+                <span style="color: blue;">$21 in 13 days</span>
             </td>
         </tr>
         {% endfor %}
@@ -111,7 +101,7 @@
 </div>
 
 <div class="otdm__player-confirmation">
-    <h5><span style="color: red;">How certain</span> are you that you prefer to</h5>
+    <h5>Based on your indicated choice on the previous screen, <span style="color: red;">how certain</span> are you that you prefer to</h5>
 
     <p class="text-center">
         <span class="otdm__confirmation-either"></span>

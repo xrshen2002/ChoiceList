@@ -9,11 +9,11 @@
 
 {% block content %}
     <p style="text-align: center;font-size: 24px;">Today is <b><span class="date"></span></b> (MM-DD-YYYY, MM = month, DD = day of the month, YYYY = year).</p>
-    <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
-    <p> Note: The amount of money and date might be different from previous questions.</p>
+
 
 <div class="otdm__choices-selection">
-
+    <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
+    <p>Note: You are choosing between a payment now and a payment in the future, the amount of money and date might be different from previous questions.</p>
     <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
         <thead>
         <tr class="text-center">
@@ -46,7 +46,7 @@ dateElements.forEach(function(element) {
     element.textContent = formattedDate;
 });
 
-var receivingAmount = 1; // 初始金额
+var receivingAmount = 0; // 初始金额
 
 // 获取所有包含 class="receiving_amount" 的元素
 var amountElements = document.querySelectorAll('.receiving_amount');
@@ -76,10 +76,10 @@ amountElements.forEach(function(element) {
                 </label>
             </td>
             <td class="text-center">
-                <span style="color: blue;">$25 on <span class="receiving_date"></span></span>
+                <span style="color: blue;">$24 on <span class="receiving_date"></span></span>
 <script>
     // JavaScript code to display fixed values
-    var daysInFuture = 30; // 固定日期为 15 天后
+    var daysInFuture = 13; // 固定日期为 15 天后
     var currentDate = new Date();
     var futureDate = new Date(currentDate);
     futureDate.setDate(currentDate.getDate() + daysInFuture);
@@ -119,7 +119,7 @@ amountElements.forEach(function(element) {
 </div>
 
 <div class="otdm__player-confirmation">
-    <h5><span style="color: red;">How certain</span> are you that you prefer to</h5>
+    <h5>Based on your indicated choice on the previous screen, <span style="color: red;">how certain</span> are you that you prefer to</h5>
 
     <p class="text-center">
         <span class="otdm__confirmation-either"></span>

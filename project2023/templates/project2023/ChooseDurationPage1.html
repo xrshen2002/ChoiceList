@@ -1,0 +1,129 @@
+{#{% extends "global/Page.html" %}#}
+{#{% load staticfiles otree %}#}
+{#{% load staticfiles %}#}
+{#{% load otree static %}#}
+{##}
+{#{% block title %}#}
+{#    Choose Duration#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    <div style="text-align: center; font-size: 18px;">#}
+{#        <p>Between the two periods you calculated on the previous page, which one <b>feels</b> longer?</p>#}
+{#    </div>#}
+{##}
+{#    <form id="form" method="post" style="display: flex; flex-direction: column; align-items: center; width: 100%;">#}
+{#        <div class="input-group" style="margin-bottom: 20px; text-align: center; width: 100%;">#}
+{#            <label style="display: block; text-align: center; width: 100%;">#}
+{#                <input type="radio" name="longer_period" value="09-29-2024 to 11-06-2024" required>#}
+{#                09-29-2024 to 11-06-2024#}
+{#            </label>#}
+{#        </div>#}
+{#        <div class="or-separator" style="margin: 10px 0; text-align: center;">#}
+{#            <b>or</b>#}
+{#        </div>#}
+{#        <div class="input-group" style="margin-bottom: 20px; text-align: center; width: 100%;">#}
+{#            <label style="display: block; text-align: center; width: 100%;">#}
+{#                <input type="radio" name="longer_period" value="10-05-2024 to 11-12-2024" required>#}
+{#                10-05-2024 to 11-12-2024#}
+{#            </label>#}
+{#        </div>#}
+{##}
+{#        <div style="text-align: center; margin-top: 20px;">#}
+{#            <button id="submit-btn" class="btn btn-primary" type="submit">Submit</button>#}
+{#        </div>#}
+{#    </form>#}
+{#{% endblock %}#}
+{##}
+{#{% block styles %}#}
+{#  <style>#}
+{#    .input-group {#}
+{#      display: flex;#}
+{#      justify-content: center;#}
+{#      width: 100%;#}
+{#    }#}
+{#    .input-group label {#}
+{#      font-size: 16px;#}
+{#      display: block;#}
+{#      text-align: center;#}
+{#      width: 100%;#}
+{#    }#}
+{#    .or-separator {#}
+{#      margin: 10px 0;#}
+{#      text-align: center;#}
+{#    }#}
+{#    form {#}
+{#      display: flex;#}
+{#      flex-direction: column;#}
+{#      align-items: center;#}
+{#      width: 100%;#}
+{#    }#}
+{#  </style>#}
+{#{% endblock %}#}
+
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+{% load otree static %}
+
+{% block title %}
+    Choose Duration
+{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; font-size: 18px;">
+        <p>Between the two periods you calculated on the previous page, which one <b>feels</b> longer?</p>
+    </div>
+
+    <form id="form" method="post" style="display: flex; flex-direction: column; align-items: center;">
+        <div class="choice-group" style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+            <div class="input-group" style="margin-bottom: 0px;">
+                <label style="font-size: 16px;">
+                    <input type="radio" name="longer_period1" value="09-27-2025 to 10-10-2025" required>
+                    09-27-2025 to 10-10-2025
+                </label>
+            </div>
+            <div class="or-separator" style="margin: 10px 0;">
+                <b>or</b>
+            </div>
+            <div class="input-group" style="margin-bottom: 20px;">
+                <label style="font-size: 16px;">
+                    <input type="radio" name="longer_period1" value="10-05-2025 to 10-18-2025" required>
+                    10-05-2025 to 10-18-2025
+                </label>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="submit-btn" class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block styles %}
+  <style>
+    .input-group {
+      display: flex;
+      justify-content: center;
+    }
+    .input-group label {
+      font-size: 16px;
+    }
+    .or-separator {
+      margin: 10px 0;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .choice-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  </style>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+{% load otree static %}
+
+{% block title %}
+    Choose Duration
+{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; font-size: 18px;">
+        <p>Between the two periods you calculated on the previous page, which one <b>feels</b> longer?</p>
+    </div>
+
+    <form id="form" method="post" style="display: flex; flex-direction: column; align-items: center;">
+        <div class="choice-group" style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+            <div class="input-group" style="margin-bottom: 0px;">
+                <label style="font-size: 16px;">
+                    <input type="radio" name="longer_period2" value="02-16-2024 to 03-04-2024" required>
+                    02-16-2024 to 03-04-2024
+                </label>
+            </div>
+            <div class="or-separator" style="margin: 10px 0;">
+                <b>or</b>
+            </div>
+            <div class="input-group" style="margin-bottom: 20px;">
+                <label style="font-size: 16px;">
+                    <input type="radio" name="longer_period2" value="02-08-2024 to 02-25-2024" required>
+                    02-08-2024 to 02-25-2024
+                </label>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="submit-btn" class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block styles %}
+  <style>
+    .input-group {
+      display: flex;
+      justify-content: center;
+    }
+    .input-group label {
+      font-size: 16px;
+    }
+    .or-separator {
+      margin: 10px 0;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .choice-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  </style>
+{% endblock %}

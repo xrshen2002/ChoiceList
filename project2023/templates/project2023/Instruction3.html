@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Notice
+{% endblock %}
+
+{% block content %}
+<p>In the next few questions, you will encounter different decision pages.</p>
+<p>Please make sure to carefully check the date on the left side for each question, as it is no longer the current date.</p>
+    {% next_button %}
+{% endblock %}
+
+
