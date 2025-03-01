@@ -1,0 +1,180 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+    Your Approach to Time and Decision-Making
+{% endblock %}
+
+{% block content %}
+    <!-- 显示当前日期 -->
+    <p style="text-align: center; font-size: 24px;">
+        Today is <b><span id="date"></span></b> (MM-DD-YYYY).
+    </p>
+
+    <!-- 回显之前页面选项的结果（待 JS 赋值） -->
+    <p style="font-size: 16px; margin-bottom: 20px;">
+        In one of the previous questions, you chose<br><br>
+        <b id="previous-either" style="color: red;"></b> <b style="color: red;">in <span class="option-a-days"></span> days</b> over <b id="previous-other" style="color: blue;"></b> <b style="color: blue;">in <span class="option-a-days"></span>+17 days</b>,<br>
+        but <b id="previous-other-1" style="color: blue;"></b> <b style="color: blue;">in <span class="option-a-days"></span>+17 days</b> over <b id="previous-either-1" style="color: red;"></b> <b style="color: red;">in <span class="option-a-days"></span> days</b>.
+    </p>
+    <p style="font-size: 16px; margin-bottom: 20px;">
+        When you made this decision, how did you perceive the difference between the payment dates?
+    </p>
+
+    <!-- 表单，用于收集参与者对时间思考方式的回答 -->
+    <form id="form" method="post" style="width: 100%;">
+
+        {# 如果random_sequence=1，则先渲染“days”，后渲染“date” #}
+        {% if random_sequence == 1 %}
+            <!-- 选项1: days (上) -->
+            <p style="font-size: 16px; margin-bottom: 20px;">
+                <label>
+                    <input type="radio" name="time_thinking_choice_2" value="days" required style="margin-right: 10px;">
+                    I counted the number of days between today and the given date.
+                </label>
+            </p>
+            <!-- 选项2: date (下) -->
+            <p style="font-size: 16px; margin-bottom: 20px;">
+                <label>
+                    <input type="radio" name="time_thinking_choice_2" value="date" required style="margin-right: 10px;">
+                    I considered how the specific date felt to me (e.g., the month, the day).
+                </label>
+            </p>
+
+        {# 否则random_sequence=2，则先渲染“date”，后渲染“days” #}
+        {% else %}
+            <!-- 选项1: date (上) -->
+            <p style="font-size: 16px; margin-bottom: 20px;">
+                <label>
+                    <input type="radio" name="time_thinking_choice_2" value="date" required style="margin-right: 10px;">
+                    I considered how the specific date felt to me (e.g., the month, the day).
+                </label>
+            </p>
+            <!-- 选项2: days (下) -->
+            <p style="font-size: 16px; margin-bottom: 20px;">
+                <label>
+                    <input type="radio" name="time_thinking_choice_2" value="days" required style="margin-right: 10px;">
+                    I counted the number of days between today and the given date.
+                </label>
+            </p>
+        {% endif %}
+
+        <!-- 第三个选项始终不变，作为Other -->
+        <p style="font-size: 16px; margin-bottom: 20px;">
+            <label>
+                <input type="radio" name="time_thinking_choice_2" value="other" required id="other-radio" style="margin-right: 10px;">
+                Other (please specify):
+            </label>
+            <input type="text" id="other-input" name="time_thinking_other_2"
+                   style="display: none; padding: 5px; font-size: 16px; width: 300px; margin-left: 20px;"
+                   placeholder="Please specify...">
+        </p>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <button id="submit-btn" class="btn btn-primary" type="submit" style="font-size: 16px; padding: 8px 16px;">
+                Submit
+            </button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // -----------------------
+    // 1. 显示当前日期（格式 MM-DD-YYYY）
+    // -----------------------
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    document.getElementById("date").textContent = month + '-' + day + '-' + year;
+
+    // -----------------------
+    // 2. 从后端传入的 selected_row（即 player.c1）用于倒推出选项文本
+    // -----------------------
+    const selectedRowStr = "{{ selected_row }}";  // 例如 "3"
+    const selectedRow = selectedRowStr ? parseInt(selectedRowStr) : -1;
+
+    // -----------------------
+    // 3. 根据 selected_row 计算左侧选项文本
+    // -----------------------
+    let leftOptionText = "";
+    if (selectedRow > 0) {
+        const leftAmount = (20 + 0.2 * selectedRow).toFixed(1);
+        leftOptionText = `$${leftAmount}`;
+        const leftAmount_1 = (19.8 + 0.2 * selectedRow).toFixed(1);
+        leftOptionText_1 = `$${leftAmount_1}`;
+    } else {
+        leftOptionText = "N/A";
+    }
+    // 右侧选项固定为 "$25 in X+17 days"
+    const rightOptionText = `$25`;
+    const rightOptionText_1 = `$25`;
+
+    // -----------------------
+    // 4. 假设选择左侧；回显
+    // -----------------------
+    document.getElementById("previous-either").textContent = leftOptionText;
+    document.getElementById("previous-either-1").textContent = leftOptionText_1;
+    document.getElementById("previous-other").textContent = rightOptionText;
+    document.getElementById("previous-other-1").textContent = rightOptionText_1;
+
+    // ========== 1) 计算 "in X days" ==========
+    const currentDate = new Date(); // “今天”取自用户当前系统时间
+
+    // 你想比较的两个目标日期（可按需修改）:
+    const dateA = new Date(2025, 3, 19);   // 2025-02-10
+    const dateB = new Date(2025, 4, 6);  // 2025-02-27
+
+    function dayDiff(futureDate, baseDate) {
+        const msDiff = futureDate - baseDate;
+        return Math.round(msDiff / (1000 * 60 * 60 * 24));
+    }
+
+    // 分别计算出距离 dateA、dateB 的天数(可能为负数, 你说不做特殊处理)
+    const diffA = dayDiff(dateA, currentDate);
+    const diffB = dayDiff(dateB, currentDate);
+
+    // ========== 3) 将天数 diffA、diffB 分别填入页面 ==========
+    document.querySelectorAll('.option-a-days').forEach(el => {
+        el.textContent = diffA;
+    });
+    document.querySelectorAll('.option-b-days').forEach(el => {
+        el.textContent = diffB;
+    });
+
+    // -----------------------
+    // 5. 处理 "Other" 选项的逻辑（原有不变）
+    // -----------------------
+    const form = document.getElementById("form");
+    const otherRadio = document.getElementById("other-radio");
+    const otherInput = document.getElementById("other-input");
+
+    otherRadio.addEventListener("change", function () {
+        if (otherRadio.checked) {
+            otherInput.style.display = "inline-block";
+            otherInput.setAttribute("required", "required");
+        }
+    });
+
+    document.querySelectorAll('input[name="time_thinking_choice_2"]').forEach(input => {
+        if (input !== otherRadio) {
+            input.addEventListener("change", function () {
+                otherInput.style.display = "none";
+                otherInput.removeAttribute("required");
+                otherInput.value = "";
+            });
+        }
+    });
+
+    form.addEventListener("submit", function (e) {
+        if (otherRadio.checked && !otherInput.value.trim()) {
+            e.preventDefault();
+            alert("Please specify your thinking process if you chose 'Other'.");
+        }
+    });
+});
+</script>
+{% endblock %}

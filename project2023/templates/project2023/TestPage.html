@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+<h3>Please enter something for "chosen_text_either"</h3>
+
+<form method="post">
+    <!-- oTree 机制下，如果你想提交 chosen_text_either，就这么写 -->
+    <input type="text" name="chosen_text_either"
+           placeholder="Type something here...">
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

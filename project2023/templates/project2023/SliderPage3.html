@@ -1,0 +1,115 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+{% load otree static %}
+
+{% block title %}
+    Time Perception
+{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; font-size: 18px;">
+        <p>Please indicate how long the following periods feel on a 101-point scale from 0 to 100.</p>
+        <p>You must move all sliders to submit.</p>
+    </div>
+
+    <form id="form" method="post">
+
+
+
+        <div class="slider-group">
+            <div class="slider-label">02-23-2025 to 05-04-2025</div>
+            <div class="slider-container">
+                <span class="slider-description-left">does not feel long at all</span>
+                <input type="range" id="period_3_1" name="period_3_1" min="0" max="100" value="50" data-slider>
+                <span class="slider-description-right">feels extremely long</span>
+            </div>
+            <span id="period_3_1_value" class="slider-value">50</span>
+        </div>
+        <div class="slider-group">
+            <div class="slider-label">05-19-2025 to 07-28-2025</div>
+            <div class="slider-container">
+                <span class="slider-description-left">does not feel long at all</span>
+                <input type="range" id="period_3_2" name="period_3_2" min="0" max="100" value="50" data-slider>
+                <span class="slider-description-right">feels extremely long</span>
+            </div>
+            <span id="period_3_2_value" class="slider-value">50</span>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="submit-btn" class="btn btn-primary" type="submit" disabled>Submit</button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block styles %}
+  <style>
+    .slider-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .slider-label {
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    .slider-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .slider-description-left,
+    .slider-description-right {
+      flex: 0 0 160px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .slider-group input[type="range"] {
+      flex: 1;
+      width: 70%;
+    }
+    .slider-value {
+      flex: 0 0 40px;
+      text-align: center;
+    }
+    form {
+      margin-top: 20px;
+    }
+  </style>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        var slidersTouched = 0;
+        var totalSliders = $('[data-slider]').length;
+
+        $('[data-slider]').on('input', function() {
+            var sliderId = $(this).attr('id');
+            var valueSpanId = '#' + sliderId + '_value';
+            $(valueSpanId).text($(this).val());
+
+            if (!$(this).data('touched')) {
+                $(this).data('touched', true);
+                slidersTouched++;
+                checkAllSlidersMoved();
+            }
+        });
+
+        function checkAllSlidersMoved() {
+            if (slidersTouched === totalSliders) {
+                $('#submit-btn').prop('disabled', false);
+            }
+        }
+
+        $("#form").submit(function(event) {
+            if (slidersTouched !== totalSliders) {
+                event.preventDefault();
+                alert('Please move all the sliders before submitting.');
+            }
+        });
+    });
+  </script>
+{% endblock %}

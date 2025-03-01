@@ -1,0 +1,81 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+{% load otree static %}
+
+{% block title %}
+    Calculating Duration
+{% endblock %}
+
+{% block content %}
+    <div style="text-align: center; font-size: 18px;">
+        <p><b>Example:</b> The duration from 04-02-2024 to 04-28-2024 is calculated as the difference between 04-02-2024 00:00 and 04-28-2024 00:00, which is 26 days. Note that the number of days in each month varies.</p>
+    </div>
+
+    <form id="form" method="post" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div class="input-group" style="margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <label for="duration_5" style="font-size: 16px; margin-bottom: 10px; white-space: nowrap;">
+                Calculate the duration from 02-23-2025 to 05-04-2025:
+            </label>
+            <div class="input-container" style="display: flex; align-items: center;">
+                <input type="number" id="duration_5" name="duration_5" required style="width: 100px; padding: 5px; font-size: 16px; text-align: center;">
+                <span class="unit" style="margin-left: 10px; font-size: 16px;">days</span>
+            </div>
+        </div>
+        <div class="input-group" style="margin-bottom: 30px; display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <label for="duration_6" style="font-size: 16px; margin-bottom: 10px; white-space: nowrap;">
+                Calculate the duration from 05-19-2025 to 07-28-2025:
+            </label>
+            <div class="input-container" style="display: flex; align-items: center;">
+                <input type="number" id="duration_6" name="duration_6" required style="width: 100px; padding: 5px; font-size: 16px; text-align: center;">
+                <span class="unit" style="margin-left: 10px; font-size: 16px;">days</span>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="submit-btn" class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block styles %}
+  <style>
+    .input-group {
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .input-group label {
+      font-size: 16px;
+      margin-bottom: 10px;
+      white-space: nowrap;
+    }
+    .input-container {
+      display: flex;
+      align-items: center;
+    }
+    .input-container input {
+      width: 100px;
+      padding: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .unit {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+{% endblock %}
+

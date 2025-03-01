@@ -1,0 +1,145 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+{% load otree static %}
+
+{% block title %}
+    The Choice List
+{% endblock %}
+
+{% block content %}
+<!-- 显示当前日期（动态获取） -->
+<p style="text-align: center;font-size: 24px;">
+    Today is <b><span id="date"></span></b> (MM-DD-YYYY).
+</p>
+
+<script>
+// 1) 动态获取“今天”的日期
+const today = new Date();
+
+// 格式化字符串
+const formattedYear = today.getFullYear();
+const formattedMonth = String(today.getMonth() + 1).padStart(2, '0');
+const formattedDay = String(today.getDate()).padStart(2, '0');
+
+// 在页面上显示
+document.getElementById("date").textContent =
+    formattedMonth + '-' + formattedDay + '-' + formattedYear;
+</script>
+
+<div class="otdm__choices-selection">
+    <!-- 2) 补充说明文字更完整 -->
+    <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
+    <p>
+        Note: You are choosing between two payments in the future, the amount of money
+        and number of days might be different from previous questions. Please read carefully
+        and select the option you prefer.
+    </p>
+
+    <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
+        <thead>
+            <tr class="text-center">
+                <th style="color: red;">Option A</th>
+                <th style="color: red;" width="75">A</th>
+                <th style="color: blue;" width="75">B</th>
+                <th style="color: blue;">Option B</th>
+            </tr>
+        </thead>
+        <tbody class="small">
+        {% for day, rev_day in day_gain %}
+            <tr>
+                <td class="text-center">
+                    <!-- 左侧金额 + in X days -->
+                    <span style="color: red;">
+                        $<span class="receiving_amount"></span>
+                        in <span class="option-a-days"></span> days
+                    </span>
+                </td>
+                <td class="text-center otdm__choice-cell">
+                    <label>
+                        <input type="radio" name="otdm__option_day{{forloop.counter}}"
+                               class="otdm__choice-input"
+                               value="A" data-day="{{ day }}" data-index="{{ forloop.counter }}">
+                    </label>
+                </td>
+                <td class="text-center otdm__choice-cell">
+                    <label>
+                        <input type="radio" name="otdm__option_day{{forloop.counter}}"
+                               class="otdm__choice-input"
+                               value="B" data-day="{{ day }}" data-index="{{ forloop.counter }}">
+                    </label>
+                </td>
+                <td class="text-center">
+                    <!-- 右侧固定 $25 + in X days -->
+                    <span style="color: blue;">
+                        $<span class="option-b-amount"></span>
+                        in <span class="option-a-days"></span>+30 days
+                    </span>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="otdm__waiting" style="text-align: center;">
+        You have to select an option above to continue.
+    </div>
+</div>
+
+
+
+<!-- oTree 的下一步按钮 -->
+<div class="otdm__confirm-button-wrapper" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<input class="otdm__value" type="hidden" name="{{ var_name }}">
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'otdm/styles/choices.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'otdm/scripts/choices.js' %}"></script>
+
+<script>
+// ========== 1) 计算 "in X days" ==========
+const currentDate = new Date(); // “今天”取自用户当前系统时间
+
+// 你想比较的两个目标日期（可按需修改）:
+const dateA = new Date(2025, 11, 19);   // 2025-02-10
+const dateB = new Date(2026, 0, 18);  // 2025-02-27
+
+function dayDiff(futureDate, baseDate) {
+    const msDiff = futureDate - baseDate;
+    return Math.round(msDiff / (1000 * 60 * 60 * 24));
+}
+
+// 分别计算出距离 dateA、dateB 的天数(可能为负数, 你说不做特殊处理)
+const diffA = dayDiff(dateA, currentDate);
+const diffB = dayDiff(dateB, currentDate);
+
+// ========== 2) 金额从 20 开始，每行 +0.2，只保留 1 位小数 ==========
+// 左侧
+let amountLeft = 20.0;
+document.querySelectorAll('.receiving_amount').forEach(el => {
+    el.textContent = amountLeft.toFixed(1);
+    amountLeft += 0.2;
+});
+
+// 右侧固定 25.0
+document.querySelectorAll('.option-b-amount').forEach(el => {
+    el.textContent = (25.0).toFixed(1);
+});
+
+// ========== 3) 将天数 diffA、diffB 分别填入页面 ==========
+document.querySelectorAll('.option-a-days').forEach(el => {
+    el.textContent = diffA;
+});
+document.querySelectorAll('.option-b-days').forEach(el => {
+    el.textContent = diffB;
+});
+</script>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+{% load otree static %}
+
+{% block title %}
+    The Choice List
+{% endblock %}
+
+{% block content %}
+<!-- 显示当前日期（动态获取） -->
+<p style="text-align: center;font-size: 24px;">
+    Today is <b><span id="date"></span></b> (MM-DD-YYYY).
+</p>
+
+<script>
+// 1) 动态获取“今天”的日期
+const today = new Date();
+const formattedYear = today.getFullYear();
+const formattedMonth = String(today.getMonth() + 1).padStart(2, '0');
+const formattedDay = String(today.getDate()).padStart(2, '0');
+
+document.getElementById("date").textContent =
+    formattedMonth + '-' + formattedDay + '-' + formattedYear;
+</script>
+
+<div class="otdm__choices-selection">
+    <!-- 2) 补充说明文字更完整 -->
+    <p>If you were given the choice between the following two options to receive money, which one would you prefer?</p>
+    <p>
+        Note: You are choosing between two payments in the future, the amount of money
+        and number of days might be different from previous questions. Please read carefully
+        and select the option you prefer.
+    </p>
+
+    <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
+        <thead>
+            <tr class="text-center">
+                <th style="color: red;">Option A</th>
+                <th style="color: red;" width="75">A</th>
+                <th style="color: blue;" width="75">B</th>
+                <th style="color: blue;">Option B</th>
+            </tr>
+        </thead>
+        <tbody class="small">
+        {% for day, rev_day in day_gain %}
+            <tr>
+                <td class="text-center">
+                    <!-- 左侧日期写死: 02-01-2025 -->
+                    <span style="color: red;">
+                        $<span class="receiving_amount"></span> on 02-17-2025
+                    </span>
+                </td>
+                <td class="text-center otdm__choice-cell">
+                    <label>
+                        <input type="radio" name="otdm__option_day{{forloop.counter}}"
+                               class="otdm__choice-input"
+                               value="A" data-day="{{ day }}" data-index="{{ forloop.counter }}">
+                    </label>
+                </td>
+                <td class="text-center otdm__choice-cell">
+                    <label>
+                        <input type="radio" name="otdm__option_day{{forloop.counter}}"
+                               class="otdm__choice-input"
+                               value="B" data-day="{{ day }}" data-index="{{ forloop.counter }}">
+                    </label>
+                </td>
+                <td class="text-center">
+                    <!-- 右侧日期写死: 02-18-2025, 固定金额 25.0 -->
+                    <span style="color: blue;">
+                        $<span class="fixed-right-amount"></span> on 03-06-2025
+                    </span>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="otdm__waiting" style="text-align: center;">
+        You have to select an option above to continue.
+    </div>
+</div>
+
+<!-- oTree 的下一步按钮 -->
+<div class="otdm__confirm-button-wrapper" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<input class="otdm__value" type="hidden" name="{{ var_name }}">
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'otdm/styles/choices.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'otdm/scripts/choices.js' %}"></script>
+
+<script>
+// 3) 金额从 20 开始，每行 +0.2，只保留 1 位小数
+let amountEls = document.querySelectorAll('.receiving_amount');
+let amount = 20.0;
+amountEls.forEach(el => {
+    el.textContent = amount.toFixed(1);
+    amount += 0.2;
+});
+
+// 右侧固定 25.0，一位小数
+document.querySelectorAll('.fixed-right-amount').forEach(el => {
+    el.textContent = (25.0).toFixed(1);
+});
+</script>
+{% endblock %}

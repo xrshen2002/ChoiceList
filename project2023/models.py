@@ -10,6 +10,12 @@ from otree.constants import BaseConstants
 
 from otree.models import BaseSubsession, BaseGroup, BasePlayer
 
+from otree.api import (
+    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer
+)
+
+
+
 
 author = 'Michael Rose <michael_rose@gmx.de>'
 
@@ -17,10 +23,6 @@ doc = """
 otdm provides an easy way of creating experiments to measure the temporal discounting of money
 using the Direct Method (DM) [Attema et al., 2016]
 """
-
-from otree.api import (
-    models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer, Page
-)
 
 class Constants(BaseConstants):
     name_in_url = 'project2023'
@@ -109,382 +111,64 @@ class Player(BasePlayer):
     duration_2 = models.IntegerField()
     duration_3 = models.IntegerField()
     duration_4 = models.IntegerField()
+    duration_5 = models.IntegerField()
+    duration_6 = models.IntegerField()
 
     longer_period1 = models.StringField(
         choices=[
-            '09-27-2025 to 10-10-2025',
-            '10-05-2025 to 10-18-2025'
+            '03-14-2025 to 03-31-2025',
+            '04-19-2025 to 05-06-2024'
         ],
         widget=widgets.RadioSelect
     )
 
     longer_period2 = models.StringField(
         choices=[
-            '02-16-2024 to 03-04-2024',
-            '02-08-2024 to 02-25-2024'
+            '03-01-2025 to 03-31-2025',
+            '12-19-2025 to 01-18-2026'
         ],
         widget=widgets.RadioSelect
     )
 
-    cert10 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
+    longer_period3 = models.StringField(
+        choices=[
+            '02-23-2025 to 05-04-2025',
+            '05-19-2025 to 07-28-2025'
+        ],
+        widget=widgets.RadioSelect
     )
 
-    cert11 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
 
-    cert12 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
+    time_thinking_choice = models.StringField(
+        choices=[
+            'days',
+            'date',
+            'other'
+        ],
+        widget=widgets.RadioSelect
     )
+    time_thinking_other = models.StringField(
+            blank=True  # 允许为空
+        )
 
-    cert13 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
+    time_thinking_choice_2 = models.StringField(
+        choices=[
+            'days',
+            'date',
+            'other'
+        ],
+        widget=widgets.RadioSelect
     )
+    time_thinking_other_2 = models.StringField(
+            blank=True  # 允许为空
+        )
 
-    cert14 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
+    # chosen_text_either = models.StringField(blank=True, null=True)
+    chosen_text_either = models.LongStringField()
+    chosen_text_other = models.LongStringField()
 
-    cert15 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert20 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert21 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert22 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert23 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert24 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert25 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert30 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert31 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert32 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert40 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert41 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert42 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert50 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert51 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert52 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert60 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert61 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert62 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert70 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert71 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert72 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert80 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert81 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert82 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert90 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert91 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert92 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert100 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert101 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert102 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert110 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert111 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert112 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert120 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert121 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert122 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert130 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert131 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert132 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert140 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert141 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert142 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert150 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert151 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert152 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert160 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert161 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert162 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert170 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert171 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert172 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert180 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert181 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
-
-    cert182 = models.IntegerField(
-        label="",
-        choices=[(i, f"{i}%") for i in range(0, 101, 10)],
-        widget=widgets.RadioSelectHorizontal
-    )
+    # 用于记录选项，值为 "A" 或 "B"；如果没有记录选项，则可以为空
+    selected_choice = models.StringField(blank=True)
 
     current_step = models.IntegerField(initial=1)
     """Current step the player is in
@@ -614,6 +298,10 @@ class Player(BasePlayer):
     c59 = models.IntegerField(initial=-1)
 
     c60 = models.IntegerField(initial=-1)
+
+    c61 = models.IntegerField(initial=-1)
+
+    c62 = models.IntegerField(initial=-1)
 
     def goto_next_step(self) -> None:
         """Advances the player to the next step

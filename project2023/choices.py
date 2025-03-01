@@ -19,31 +19,31 @@ class ChoiceStep(Enum):
     C_1 = 1, \
            'c1', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 21
     C_2 = 2, \
            'c2', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 26
     C_3 = 3, \
            'c3', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 26
     C_4 = 4, \
           'c4', \
           lambda p: 1, \
-          lambda p: 26
+          lambda p: 31
     C_5 = 5, \
            'c5', \
            lambda p: 1, \
-           lambda p: 21
+           lambda p: 26
     C_6 = 6, \
            'c6', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 26
     C_7 = 7, \
            'c7', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 31
     C_8 = 8, \
            'c8', \
            lambda p: 1, \
@@ -51,72 +51,72 @@ class ChoiceStep(Enum):
     C_9 = 9, \
            'c9', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 26
     C_10 = 10, \
            'c10', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 26
     C_11 = 11, \
            'c11', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 26
     C_12 = 12, \
            'c12', \
            lambda p: 1, \
-           lambda p: 21
+           lambda p: 31
     C_13 = 13, \
            'c13', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 26
     C_14 = 14, \
           'c14', \
           lambda p: 1, \
-          lambda p: 26
+          lambda p: 31
 
     C_15 = 15, \
            'c15', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 21
     C_16 = 16, \
            'c16', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 26
     C_17 = 17, \
            'c17', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 26
     C_18 = 18, \
            'c18', \
            lambda p: 1, \
-           lambda p: 21
+           lambda p: 26
     C_19 = 19, \
            'c19', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 26
     C_20 = 20, \
            'c20', \
            lambda p: 1, \
-           lambda p: 26
+           lambda p: 31
     C_21 = 21, \
            'c21', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 26
     C_22 = 22, \
            'c22', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 21
     C_23 = 23, \
            'c23', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 21
     C_24 = 24, \
           'c24', \
           lambda p: 1, \
-          lambda p: 21
+          lambda p: 26
     C_25 = 25, \
            'c25', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 26
     C_26 = 26, \
            'c26', \
            lambda p: 1, \
@@ -124,15 +124,15 @@ class ChoiceStep(Enum):
     C_27 = 27, \
            'c27', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 26
     C_28 = 28, \
            'c28', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 21
     C_29 = 29, \
            'c29', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 26
     C_30 = 30, \
            'c30', \
            lambda p: 1, \
@@ -140,47 +140,47 @@ class ChoiceStep(Enum):
     C_31 = 31, \
            'c31', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 31
     C_32 = 32, \
-           'c2', \
+           'c32', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 31
     C_33 = 33, \
            'c33', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 26
     C_34 = 34, \
           'c34', \
           lambda p: 1, \
-          lambda p: 26
+          lambda p: 21
     C_35 = 35, \
            'c35', \
            lambda p: 1, \
-           lambda p: 21
+           lambda p: 26
     C_36 = 36, \
            'c36', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 26
     C_37 = 37, \
            'c37', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 26
     C_38 = 38, \
            'c38', \
            lambda p: 1, \
-           lambda p: 26
+           lambda p: 21
     C_39 = 39, \
            'c39', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 31
     C_40 = 40, \
            'c40', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 26
     C_41 = 41, \
            'c41', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 26
     C_42 = 42, \
            'c42', \
            lambda p: 1, \
@@ -188,7 +188,7 @@ class ChoiceStep(Enum):
     C_43 = 43, \
            'c43', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 31
     C_44 = 44, \
           'c44', \
           lambda p: 1, \
@@ -196,24 +196,23 @@ class ChoiceStep(Enum):
     C_45 = 45, \
            'c45', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 31
     C_46 = 46, \
            'c46', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 26
     C_47 = 47, \
            'c47', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 21
     C_48 = 48, \
            'c48', \
            lambda p: 1, \
-           lambda p: 21
-
+           lambda p: 26
     C_49 = 49, \
            'c49', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 26
     C_50 = 50, \
            'c50', \
            lambda p: 1, \
@@ -221,15 +220,15 @@ class ChoiceStep(Enum):
     C_51 = 51, \
            'c51', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 31
     C_52 = 52, \
            'c52', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 26
     C_53 = 53, \
            'c53', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 26
     C_54 = 54, \
           'c54', \
           lambda p: 1, \
@@ -237,7 +236,7 @@ class ChoiceStep(Enum):
     C_55 = 55, \
            'c55', \
            lambda p: 1, \
-           lambda p: 22
+           lambda p: 26
     C_56 = 56, \
            'c56', \
            lambda p: 1, \
@@ -245,19 +244,29 @@ class ChoiceStep(Enum):
     C_57 = 57, \
            'c57', \
            lambda p: 1, \
-           lambda p: 24
+           lambda p: 26
     C_58 = 58, \
            'c58', \
            lambda p: 1, \
-           lambda p: 25
+           lambda p: 21
     C_59 = 59, \
            'c59', \
            lambda p: 1, \
-           lambda p: 23
+           lambda p: 31
     C_60 = 60, \
            'c60', \
            lambda p: 1, \
-           lambda p: 21
+           lambda p: 26
+    C_61 = 61, \
+           'c61', \
+           lambda p: 1, \
+           lambda p: 26
+    C_62 = 62, \
+           'c62', \
+           lambda p: 1, \
+           lambda p: 26
+
+
 
     def __new__(cls, keycode: int,
                 field_name: str,
